@@ -1,0 +1,27 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int Number = int.Parse(Console.ReadLine());
+            string[] Names = Console.ReadLine().Split();
+            Func<string, int, bool> triFunction = (string Name, int Sum) => Name.Sum(x => x) >= Sum;
+            PrintOutput(triFunction, Names, Number);
+
+        }
+
+        private static void PrintOutput(Func<string, int, bool> Function, string[] names, int number)
+        {
+            string name = names.FirstOrDefault(name => Function(name, number));
+            if (name != null)
+            {
+                Console.WriteLine(name);
+            }
+        }
+    }
+}
