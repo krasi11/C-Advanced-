@@ -1,0 +1,36 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Predicate<int> predicate = (number) => true;
+
+            int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            string Command = Console.ReadLine();
+            int start = numbers[0];
+            int end = numbers[1];
+
+            IEnumerable<int> numbersRange = Enumerable.Range(start, (end - start + 1));
+            if (Command == "odd")
+            {
+                predicate = (number) => number % 2 != 0;
+            }
+            else if (Command == "even")
+            {
+                predicate = (number) => number % 2 == 0;
+            }
+            foreach (int number in numbersRange)
+            {
+                if (predicate(number))
+                {
+                    Console.WriteLine(number + " ");
+                }
+            }
+        }
+    }
+}
