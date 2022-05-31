@@ -1,0 +1,24 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] numbers = Console.ReadLine()
+                .Split(", ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(double.Parse)
+                .Select(x => x *= 1.2)
+                .ToArray();
+
+            foreach (var number in numbers)
+            {
+                Console.WriteLine(Math.Round(number, 2).ToString("N2"));
+            }
+           
+        }
+    }
+}
