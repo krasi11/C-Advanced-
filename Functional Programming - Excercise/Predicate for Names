@@ -1,0 +1,24 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int lenght = int.Parse(Console.ReadLine());
+
+            Predicate<string> predicate = (name) => name.Length <= lenght;
+            List<string> Names = Console.ReadLine()
+                .Split()
+                .Where(x => predicate(x))
+                .ToList();
+            foreach (var Name in Names)
+            {
+                Console.WriteLine(Name);
+            }
+        }
+    }
+}
