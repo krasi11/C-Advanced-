@@ -1,0 +1,76 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int PeopleCount = int.Parse(Console.ReadLine());
+            Person[] people = new Person[PeopleCount];
+            for (int People = 0; People < PeopleCount; People++)
+            {
+                string[] person = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries);
+
+                people[People] = new Person();
+                people[People].Name = person[0];
+                people[People].Age = int.Parse(person[1]);
+            }
+            string filter = Console.ReadLine();
+            int filterAge = int.Parse(Console.ReadLine());
+
+            Func<Person, bool> condition = GetAgeCondition(filter, filterAge);
+            Action<Person> formatter = GetFormatter(Console.ReadLine());
+            PrintPeople(people, formatter, condition);
+ 
+           
+        }
+
+        private static void PrintPeople(Person[] people, Action<Person> formatter, Func<Person, bool> condition)
+        {
+            foreach (var person in people)
+            {
+                if (condition(person))
+                {
+                    formatter(person);
+                }
+            };
+        }
+
+        private static Action<Person> GetFormatter(string format)
+        {
+            switch (format)
+            {
+                case "name":
+                    return p => { Console.WriteLine($"{p.Name}"); };
+                case "age":
+                    return p => { Console.WriteLine($"{p.Age}"); };
+                case "name age":
+                    return p => { Console.WriteLine($"{p.Name} - {p.Age}"); };
+                default:
+                    return null;
+            }
+        }
+
+        private static Func<Person, bool> GetAgeCondition(string filter, int filterAge)
+        {
+            switch(filter)
+            {
+                case "younger":
+                    return p => p.Age < filterAge;
+                case "older":
+                    return p => p.Age >= filterAge;
+
+                default:
+                    return null;
+            }
+        }
+    }
+}
