@@ -1,0 +1,44 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> Numbers = Console.ReadLine()
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToList();
+
+            string Command = Console.ReadLine();
+
+            Action<List<int>> Printer = nums => Console.WriteLine(string.Join(" ",nums));
+            Func<int, int> Arithmetics = (numbers) => numbers;
+
+            while (Command!="end")
+            {
+                if (Command == "add")
+                {
+                    Arithmetics = nums => nums + 1;
+                }
+                else if (Command == "multiply")
+                {
+                    Arithmetics = nums => nums * 2;
+                }
+                else if (Command == "subtract")
+                {
+                    Arithmetics = nums => nums - 1;
+                }
+                else 
+                {
+                    Printer(Numbers);
+                }
+                Numbers = Numbers.Select(Arithmetics).ToList();
+                Command = Console.ReadLine();
+            }
+        }
+    }
+}
