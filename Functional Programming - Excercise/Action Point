@@ -1,0 +1,23 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] names = Console.ReadLine().Split();
+            Action<string[]> printInput = print;
+
+
+            printInput(names);
+        }
+
+        private static void print(string[] names)
+        {
+            Console.WriteLine(string.Join(Environment.NewLine, names));
+        }
+    }
+}
