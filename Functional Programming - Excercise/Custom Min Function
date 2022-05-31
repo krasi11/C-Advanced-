@@ -1,0 +1,16 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
+            Func<List<int>, int> CustomMinFunction = (list) => list.Min();
+            Console.WriteLine(CustomMinFunction(numbers));
+        }
+    }
+}
