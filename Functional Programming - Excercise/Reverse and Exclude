@@ -1,0 +1,24 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> Numbers = Console.ReadLine()
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToList();
+
+            int n = int.Parse(Console.ReadLine());
+            Predicate<int> predicate = (number) => number % n != 0;
+            Numbers = Numbers.Where(n => predicate(n)).ToList();
+            Numbers.Reverse();
+
+            Console.WriteLine(string.Join(" ", Numbers));
+        }
+    }
+}
