@@ -1,0 +1,23 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace FunctionalProgramming1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int End = int.Parse(Console.ReadLine());
+            List<int> Deviders = Console.ReadLine().Split().Select(int.Parse).ToList();
+            Func<int, int, bool> predicate = (num, d) => num % d == 0;
+            for (int num = 0; num <= End; num++)
+            {
+                if (Deviders.All(d=>predicate(num,d)) && num != 0)
+                {
+                    Console.Write(num + " ");
+                }
+            }
+        }
+    }
+}
