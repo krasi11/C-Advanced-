@@ -1,39 +1,31 @@
+using GenericsExc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace GenericSwapMethodStrings
 {
-    class Program
+    public class StartUp
     {
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
-            List<Box<int>> swapList = new List<Box<int>>();
-
+            List<Box<string>> list = new List<Box<string>>();
             for (int i = 0; i < n; i++)
             {
-                int element = int.Parse(Console.ReadLine());
-                Box<int> box = new Box<int>(element);
-                swapList.Add(box);
+                Box<string> currentBox = new Box<string>(Console.ReadLine());
+                list.Add(currentBox);
             }
 
-            int[] providedIndexes = Console.ReadLine().Split().Select(int.Parse).ToArray();
-            SwapMethod(swapList, providedIndexes[0], providedIndexes[1]);
-
-            foreach (var element in swapList)
-            {
-                string name = element.GetType().Name;
-                Console.WriteLine($"{name}: {element.Value}");
-            }
+            int[] indexes = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            Swap(list, indexes[0], indexes[1]);
+            Console.WriteLine(string.Join(Environment.NewLine, list));
         }
 
-        private static void SwapMethod<T>(List<Box<T>> list, int firstIndex, int secondIndex)
+        static void Swap<T>(List<Box<T>> list, int idx1, int idx2)
         {
-            T tempFirst = list[firstIndex].Value;
-            T tempSecond = list[secondIndex].Value;
-            list[firstIndex] = new Box<T>(tempSecond);
-            list[secondIndex] = new Box<T>(tempFirst);
+            Box<T> temp = list[idx1];
+            list[idx1] = list[idx2];
+            list[idx2] = temp;
         }
     }
 }
