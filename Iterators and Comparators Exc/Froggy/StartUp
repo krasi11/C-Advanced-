@@ -1,0 +1,22 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+
+namespace Froggy
+{
+    class StartUp
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split(", ").Select(int.Parse).ToArray();
+            Lake lake = new Lake(input);
+            List<int> output = new List<int>();
+            foreach  (int stone in lake)
+            {
+                output.Add(stone);
+            }
+            Console.WriteLine(string.Join(", ", output));
+        }
+    }
+}
