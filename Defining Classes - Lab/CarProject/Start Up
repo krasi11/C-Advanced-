@@ -1,0 +1,23 @@
+using CarManufacturer;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+
+    public class StartUp
+    {
+        static void Main(string[] args)
+        {
+
+            Car car = new Car();
+            car.Make = "BMW";
+            car.Model = "X6";
+            car.Year = 2022;
+            car.FuelConsumption = 200 ;
+            car.FuelQuantity = 200 ;
+
+
+            Console.WriteLine(car.WhoAmI());
+        }
+    }
