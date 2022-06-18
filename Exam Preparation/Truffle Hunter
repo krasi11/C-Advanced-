@@ -107,7 +107,7 @@ namespace ExamPrepAdvanced
             {
                 for (int Col = 0; Col < matrix.GetLength(0); Col++)
                 {
-                    Console.WriteLine(matrix[Row, Col] + " ");
+                    Console.Write(matrix[Row, Col] + " ");
                 }
                 Console.WriteLine();
             }
