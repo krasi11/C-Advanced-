@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace StackSum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> ArrayOfNumbers = new Stack<int>(Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse));
+            string[] Command = Console.ReadLine().ToLower().Split();
+            while (Command[0] != "end")
+            {
+                switch (Command[0])
+                {
+                    case "add":
+                        ArrayOfNumbers.Push(int.Parse(Command[1]));
+                        ArrayOfNumbers.Push(int.Parse(Command[2]));
+                        break;
+                    case "remove":
+                        int RomoveArray = int.Parse(Command[1]);
+                        if (RomoveArray <= ArrayOfNumbers.Count)
+                        {
+                            for (int i = 0; i < RomoveArray; i++)
+                            {
+                                ArrayOfNumbers.Pop();
+                            }
+                        }
+                        break;
+                }
+                Command = Console.ReadLine().ToLower().Split();
+            }
+            Console.WriteLine($"Sum: {ArrayOfNumbers.Sum()}");
+
+        }
+    }
+}
