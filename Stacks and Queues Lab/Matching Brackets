@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace MatchingBrackets
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string Input = Console.ReadLine();
+            Stack<int> Indexes = new Stack<int>();
+            for (int i = 0; i < Input.Length; i++)
+            {
+                switch (Input[i])
+                {
+                    case '(':
+                        Indexes.Push(i);
+                        break;
+                    case ')':
+                        int index = Indexes.Pop();
+                        Console.WriteLine(Input.Substring(index, i - index + 1));
+                        break;
+                }
+            }
+
+        }
+    }
+}
