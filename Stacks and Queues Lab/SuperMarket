@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SuperMarket
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<string> Customers = new Queue<string>();
+
+            string Customer = Console.ReadLine();
+            while (Customer != "End")
+            {
+                if (Customer == "Paid")
+                {
+                    foreach (var customer in Customers)
+                    {
+                        Console.WriteLine(customer);
+                    }
+                    Customers.Clear();
+                    Customer = Console.ReadLine();
+                    continue;
+                }
+                Customers.Enqueue(Customer);
+                Customer = Console.ReadLine();
+            }
+            Console.WriteLine($"{Customers.Count} people remaining.");
+        }
+        
+    }
+}
