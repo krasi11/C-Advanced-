@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SimpleCalculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<string> StackOfNumbers = new Stack<string>(Console.ReadLine().Split().Reverse());
+            while (StackOfNumbers.Count>1)
+            {
+                int Arg1 = int.Parse(StackOfNumbers.Pop());
+                string @operator = StackOfNumbers.Pop();
+                int Arg2 = int.Parse(StackOfNumbers.Pop());
+                StackOfNumbers.Push(@operator == "+" ? (Arg1 + Arg2).ToString() : (Arg1 - Arg2).ToString());
+            }
+            Console.WriteLine(StackOfNumbers.Pop());
+
+        }
+    }
+}
