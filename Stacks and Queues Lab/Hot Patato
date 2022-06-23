@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace HotPatato
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<string> Kids = new Queue<string>(Console.ReadLine().Split());
+            int Toss = int.Parse(Console.ReadLine());
+
+            while (Kids.Count>1)
+            {
+                for (int i = 1; i < Toss; i++)
+                {
+                    Kids.Enqueue(Kids.Dequeue());
+                }
+                Console.WriteLine($"Removed {Kids.Dequeue()}");
+            }
+            Console.WriteLine($"Last is {Kids.Peek()}");
+        }
+        
+    }
+}
