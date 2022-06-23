@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Masterchef
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<char> stringToBeReversed = new Stack<char>(Console.ReadLine().ToArray());
+            while (stringToBeReversed.Count>0)
+            {
+                Console.Write(stringToBeReversed.Pop());
+            }
+
+        }
+    }
+}
